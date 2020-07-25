@@ -201,11 +201,11 @@ class _BodyState extends State<Body> {
 }
 
 class decoratedbox extends StatelessWidget {
- final String days;
- final Icon icon;
- final String temperature;
-
- decoratedbox({this.days,this.icon,this.temperature});
+// final String days;
+// final Icon icon;
+// final String temperature;
+//
+// decoratedbox({this.days,this.icon,this.temperature});
 
 
   @override
@@ -216,18 +216,17 @@ class decoratedbox extends StatelessWidget {
           color: Color(0xFF0F32E3).withOpacity(0.5),
         ),
         child: Container(
-
           height: 120,
           width: 50,
-          child: Column(
-            children: [
-             Row(children: [
-               Text(days,style: TextStyle(color: Colors.white),)
-             ],),
-              IconButton(icon: icon,),
-             Text(temperature,)
-
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Mon",style: TextStyle(color: Colors.white),),
+                Text("45",style: TextStyle(color: Colors.white),)
+              ],
+            ),
           ),
         ));
   }
