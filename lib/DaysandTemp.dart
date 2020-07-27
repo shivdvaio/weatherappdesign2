@@ -28,7 +28,6 @@ class _ShivState extends State<Shiv> {
           Padding(
             padding:  EdgeInsets.all(Sizeconfig.defaultsize * 2),
             child: Row(
-
               children: [
                 decoratedbox(time: "3AM",temp: "8C",),
                 SizedBox(width: Sizeconfig.defaultsize * 2,),
