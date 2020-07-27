@@ -13,17 +13,11 @@ class Shiv extends StatefulWidget {
 }
 
 class _ShivState extends State<Shiv> {
-//  List<decoratedbox> data = [decoratedbox(time: "4PM",temp: "4m",),
-//    decoratedbox(time: "4PM",temp: "8C",),
-//    decoratedbox(time: "3AM",temp: "8C",),
-//    decoratedbox(time: "4PM",temp: "8C",),
-//    decoratedbox(time: "3AM",temp: "8C",),
-//    decoratedbox(time: "4PM",temp: "8C",),
-//   ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(Sizeconfig.defaultsize * 1.6),
+      padding:  EdgeInsets.all(Sizeconfig.defaultsize * 3),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Sizeconfig.defaultsize* 3),
@@ -31,18 +25,28 @@ class _ShivState extends State<Shiv> {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
-          Row(children: [
-            decoratedbox(time: "4PM",temp: "8C",),
-            decoratedbox(time: "3AM",temp: "8C",),
-            decoratedbox(time: "4PM",temp: "8C",),
-            decoratedbox(time: "3AM",temp: "8C",),
-            decoratedbox(time: "4PM",temp: "8C",),
-            decoratedbox(time: "4PM",temp: "8C",),
-            decoratedbox(time: "3AM",temp: "8C",),
-            decoratedbox(time: "4PM",temp: "8C",),
-            decoratedbox(time: "3AM",temp: "8C",),
-            decoratedbox(time: "4PM",temp: "8C",),
-          ],)
+          Padding(
+            padding:  EdgeInsets.all(Sizeconfig.defaultsize * 2),
+            child: Row(
+
+              children: [
+                decoratedbox(time: "3AM",temp: "8C",),
+                SizedBox(width: Sizeconfig.defaultsize * 2,),
+                decoratedbox(time: "3AM",temp: "8C",),
+                SizedBox(width: Sizeconfig.defaultsize * 2,),
+                decoratedbox(time: "4PM",temp: "8C",), SizedBox(width: Sizeconfig.defaultsize * 2,),
+                decoratedbox(time: "4PM",temp: "8C",),
+                SizedBox(width: Sizeconfig.defaultsize * 2,),
+                decoratedbox(time: "3AM",temp: "8C",),
+                SizedBox(width: Sizeconfig.defaultsize * 2,),
+                decoratedbox(time: "4PM",temp: "8C",), SizedBox(width: Sizeconfig.defaultsize * 2,),
+                decoratedbox(time: "4PM",temp: "8C",),
+
+
+
+
+            ],),
+          )
         ],)
     ));
   }
