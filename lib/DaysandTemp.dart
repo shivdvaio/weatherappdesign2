@@ -13,13 +13,13 @@ class Shiv extends StatefulWidget {
 }
 
 class _ShivState extends State<Shiv> {
-  List<decoratedbox> data = [decoratedbox(time: "4PM",temp: "4m",),
-    decoratedbox(time: "4PM",temp: "8C",),
-    decoratedbox(time: "3AM",temp: "8C",),
-    decoratedbox(time: "4PM",temp: "8C",),
-    decoratedbox(time: "3AM",temp: "8C",),
-    decoratedbox(time: "4PM",temp: "8C",),
-   ];
+//  List<decoratedbox> data = [decoratedbox(time: "4PM",temp: "4m",),
+//    decoratedbox(time: "4PM",temp: "8C",),
+//    decoratedbox(time: "3AM",temp: "8C",),
+//    decoratedbox(time: "4PM",temp: "8C",),
+//    decoratedbox(time: "3AM",temp: "8C",),
+//    decoratedbox(time: "4PM",temp: "8C",),
+//   ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,22 +28,23 @@ class _ShivState extends State<Shiv> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Sizeconfig.defaultsize* 3),
             color: Colors.grey.withOpacity(0.4)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
           children: [
-            Expanded(
-              child: Container(
-                height: 100,
-                child: ListView.builder(
-                    itemCount: data.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: ( BuildContext context , int index) {
-                      return data[index];
-                    }),),
-            )
-          ],
-        ),),
-    );
+          Row(children: [
+            decoratedbox(time: "4PM",temp: "8C",),
+            decoratedbox(time: "3AM",temp: "8C",),
+            decoratedbox(time: "4PM",temp: "8C",),
+            decoratedbox(time: "3AM",temp: "8C",),
+            decoratedbox(time: "4PM",temp: "8C",),
+            decoratedbox(time: "4PM",temp: "8C",),
+            decoratedbox(time: "3AM",temp: "8C",),
+            decoratedbox(time: "4PM",temp: "8C",),
+            decoratedbox(time: "3AM",temp: "8C",),
+            decoratedbox(time: "4PM",temp: "8C",),
+          ],)
+        ],)
+    ));
   }
 }
 
