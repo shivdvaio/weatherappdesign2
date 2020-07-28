@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/DaysandTemp.dart';
@@ -49,9 +50,9 @@ class _BodyState extends State<Body> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Container(
-          child: Column(children: [
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
             Row(
               children: [
                 Expanded(
@@ -62,16 +63,94 @@ class _BodyState extends State<Body> {
                 ),
               ],
             ),
-            Text("Week",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight:FontWeight.bold,),textAlign: TextAlign.center,),
-            Expanded(
-              child: SizedBox(height: Sizeconfig.defaultsize *50
-                ,
-                width: double.infinity,
+            Text(
+              "Week",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Padding(
+              padding: EdgeInsets.all(Sizeconfig.defaultsize * 2),
+              child: Container(
+                height: Sizeconfig.defaultsize * 50,
+                width: Sizeconfig.defaultsize * 50,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Rowsitems(
+                      dayname: "Monday",
+                      IconSrc: "assets/cloud5.svg",
+                      temp: "32",
+                    ),
+                    Rowsitems(
+                      dayname: "Tuesday",
+                      IconSrc: "assets/cloud5.svg",
+                      temp: "32",
+                    ),
+                    Rowsitems(
+                      dayname: "Wednesday",
+                      IconSrc: "assets/cloud5.svg",
+                      temp: "33",
+                    ),
+                    Rowsitems(
+                      dayname: "Thursday",
+                      IconSrc: "assets/cloud5.svg",
+                      temp: "32",
+                    ),
+                    Rowsitems(
+                      dayname: "Friday",
+                      IconSrc: "assets/cloud5.svg",
+                      temp: "33",
+                    ),
 
+                  ],
+                ),
               ),
             )
-          ],)
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class Rowsitems extends StatelessWidget {
+  final String dayname;
+  final String IconSrc;
+  final String temp;
+  Rowsitems({this.dayname, this.IconSrc, this.temp});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            dayname,
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          Padding(
+            padding:  EdgeInsets.all(Sizeconfig.defaultsize * 2),
+            child: Container(
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: SvgPicture.asset(IconSrc),
+                  ),
+                  SizedBox(width: Sizeconfig.defaultsize * 4,),
+                  Text(temp,style: TextStyle(color: Colors.white, fontSize: 20))
+                ],
+              ),
+            ),
+          ),
+
+
+        ],
       ),
     );
   }

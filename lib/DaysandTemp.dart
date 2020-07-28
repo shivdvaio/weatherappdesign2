@@ -5,7 +5,7 @@ import 'uppercontainer.dart';
 import 'DAYROQ.dart';
 import 'package:weather_app/size_config.dart';
 import 'middlecoloumn.dart';
-import 'main.dart';
+
 
 class Shiv extends StatefulWidget {
   @override
