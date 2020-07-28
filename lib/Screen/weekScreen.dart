@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF314776),
+      backgroundColor: Colors.blueAccent.withOpacity(0.8),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xFF314776),

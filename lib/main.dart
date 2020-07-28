@@ -20,9 +20,17 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
 
         appBar: AppBar(
+          title: Text("Weather App",style: TextStyle(fontWeight: FontWeight.bold),),
+          leading: IconButton(icon: Icon(
+
+              Icons.navigation,
+          color: Colors.white,
+          size: 35,
+          ),),
           backgroundColor: Color(0xFF314776),
           elevation: 0,
           actions: [
+
             IconButton(
               icon: SvgPicture.asset('assets/icons2.svg',
               height: Sizeconfig.defaultsize * 4,

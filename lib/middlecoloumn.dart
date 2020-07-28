@@ -50,7 +50,7 @@ class middlecoloumn extends StatelessWidget {
               ],
             ),
             Text(
-              "Sat,6A1ug",
+              "Sat,6 Aug",
               style: TextStyle(
                   color: Color(0XffB1BAC6),
                   fontSize: Sizeconfig.defaultsize * 1.6,

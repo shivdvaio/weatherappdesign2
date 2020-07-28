@@ -22,12 +22,21 @@ class containerupper extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("London",
+                  Text("Kasganj",
                       style: GoogleFonts.getFont("Montserrat",
                           fontWeight: FontWeight.w500,
                           fontSize: 30,
                           color: Colors.white)),
+                  IconButton(
+
+                    icon: SvgPicture.asset(
+
+                      'assets/search.svg',
+                    ),
+                      )
+
                 ],
               ),
               SizedBox(
@@ -36,7 +45,7 @@ class containerupper extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "United Kingdom",
+                    "India",
                     style: GoogleFonts.getFont("Montserrat",
                         fontSize: 15, color: Colors.white),
                   ),
@@ -49,11 +58,10 @@ class containerupper extends StatelessWidget {
                       children: [
                         IconButton(
                           icon: SvgPicture.asset(
-
-                              'assets/shiv3.svg',
+                            'assets/shiv3.svg',
                             height: 40,
                             width: 40,
-                         ),
+                          ),
                         ),
                         Text(
                           "Cloudy",
