@@ -66,8 +66,9 @@ class _BodyState extends State<Body> {
             Text(
               "Week",
               style: TextStyle(
+                fontFamily: "Acme",
                 color: Colors.white,
-                fontSize: 30,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,

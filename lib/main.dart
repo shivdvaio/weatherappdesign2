@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+
         appBar: AppBar(
           backgroundColor: Color(0xFF314776),
           elevation: 0,
@@ -48,23 +49,32 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: SafeArea(
-      child: Column(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
 
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          containerupper(),
-          SizedBox(
-            height: Sizeconfig.defaultsize * 60,
-            child: Column(
+            image: DecorationImage(
+                colorFilter: ColorFilter.mode(
+                    Colors.green.withOpacity(0.8), BlendMode.dstATop),
+                fit: BoxFit.cover,
+                image: AssetImage('assets/weather.jpg'))),
+        child: Column(
 
-              children: [
-                middlecoloumn(),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            containerupper(),
+            SizedBox(
+              height: Sizeconfig.defaultsize * 60,
+              child: Column(
 
-                Expanded(child: Shiv())
-              ],
+                children: [
+                  middlecoloumn(),
+
+                  Expanded(child: Shiv())
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ));
   }

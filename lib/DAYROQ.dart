@@ -4,35 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/size_config.dart';
 import 'package:weather_app/Screen/weekScreen.dart';
 
-class dayrowmain extends StatelessWidget {
-  const dayrowmain({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          daysrows(
-
-            name: "Today",
-
-
-          ),
-          daysrows(
-            name: "Tommorow",
-          ),
-          daysrows(
-            name: "Week",
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class daysrows extends StatelessWidget {
   final String name;
   final Function function;
@@ -44,9 +15,8 @@ class daysrows extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(Sizeconfig.defaultsize * 1),
         child: InkWell(
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> weekScreen()));
-          },
+            onTap: function,
+
           child: Container(
             decoration: BoxDecoration(
                 color: Color(0xFFB1BAC6).withOpacity(0.5),

@@ -24,7 +24,6 @@ class middlecoloumn extends StatelessWidget {
                 children: [
                   rowchild(
                     iconSrc: "assets/meter.svg",
-
                     iconvalue: "75 %",
                   ),
                   rowchild(
@@ -51,7 +50,7 @@ class middlecoloumn extends StatelessWidget {
               ],
             ),
             Text(
-              "Sat,6Aug",
+              "Sat,6A1ug",
               style: TextStyle(
                   color: Color(0XffB1BAC6),
                   fontSize: Sizeconfig.defaultsize * 1.6,
@@ -61,13 +60,22 @@ class middlecoloumn extends StatelessWidget {
               child: Row(
                 children: [
                   daysrows(
+                    function: (){
+
+                    },
                     name: "Today",
                   ),
                   daysrows(
+                    function: (){
+
+                    },
                     name: "Tommorow",
                   ),
                   daysrows(
                     name: "Week",
+                    function: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> weekScreen()));
+                    },
                   )
                 ],
               ),
@@ -91,9 +99,8 @@ class rowchild extends StatelessWidget {
       children: [
         IconButton(
           icon: SvgPicture.asset
-
-            (iconSrc,height: Sizeconfig.defaultsize * 4,
-          width: Sizeconfig.defaultsize * 4,),
+            (iconSrc,height: 40,
+          width: 40,),
         ),
         Text(
           iconvalue,

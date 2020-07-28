@@ -51,6 +51,13 @@ flutter:
 
   assets:
     - assets/
+  fonts:
+    - family: Acme
+      fonts:
+        - asset: assets/fonts/Acme-Regular.ttf
+
+
+
 
 
 

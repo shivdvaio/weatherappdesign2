@@ -50,10 +50,9 @@ class containerupper extends StatelessWidget {
                         IconButton(
                           icon: SvgPicture.asset(
 
-
                               'assets/shiv3.svg',
-                            height: Sizeconfig.defaultsize * 6,
-                            width: Sizeconfig.defaultsize * 6,
+                            height: 40,
+                            width: 40,
                          ),
                         ),
                         Text(
