@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/size_config.dart';
 import 'DAYROQ.dart';
+import 'package:weather_app/Screen/weekScreen.dart';
 
 class middlecoloumn extends StatelessWidget {
   const middlecoloumn({
@@ -23,6 +24,7 @@ class middlecoloumn extends StatelessWidget {
                 children: [
                   rowchild(
                     iconSrc: "assets/meter.svg",
+
                     iconvalue: "75 %",
                   ),
                   rowchild(
@@ -55,18 +57,20 @@ class middlecoloumn extends StatelessWidget {
                   fontSize: Sizeconfig.defaultsize * 1.6,
                   fontWeight: FontWeight.bold),
             ),
-            Row(
-              children: [
-                daysrows(
-                  name: "Today",
-                ),
-                daysrows(
-                  name: "Tommorow",
-                ),
-                daysrows(
-                  name: "Week",
-                )
-              ],
+            Container(
+              child: Row(
+                children: [
+                  daysrows(
+                    name: "Today",
+                  ),
+                  daysrows(
+                    name: "Tommorow",
+                  ),
+                  daysrows(
+                    name: "Week",
+                  )
+                ],
+              ),
             ),
           ],
         ),
@@ -86,7 +90,10 @@ class rowchild extends StatelessWidget {
     return Column(
       children: [
         IconButton(
-          icon: SvgPicture.asset(iconSrc),
+          icon: SvgPicture.asset
+
+            (iconSrc,height: Sizeconfig.defaultsize * 4,
+          width: Sizeconfig.defaultsize * 4,),
         ),
         Text(
           iconvalue,

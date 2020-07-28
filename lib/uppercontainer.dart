@@ -48,8 +48,13 @@ class containerupper extends StatelessWidget {
                     child: Column(
                       children: [
                         IconButton(
-                          iconSize: 100,
-                          icon: SvgPicture.asset('assets/shiv3.svg'),
+                          icon: SvgPicture.asset(
+
+
+                              'assets/shiv3.svg',
+                            height: Sizeconfig.defaultsize * 6,
+                            width: Sizeconfig.defaultsize * 6,
+                         ),
                         ),
                         Text(
                           "Cloudy",

@@ -5,56 +5,87 @@ import 'uppercontainer.dart';
 import 'DAYROQ.dart';
 import 'package:weather_app/size_config.dart';
 import 'middlecoloumn.dart';
+import 'main.dart';
 
 class Shiv extends StatefulWidget {
-
   @override
   _ShivState createState() => _ShivState();
 }
 
 class _ShivState extends State<Shiv> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(Sizeconfig.defaultsize * 3),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Sizeconfig.defaultsize* 3),
-            color: Colors.grey.withOpacity(0.4)),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-          Padding(
-            padding:  EdgeInsets.all(Sizeconfig.defaultsize * 2),
-            child: Row(
+        padding: EdgeInsets.all(Sizeconfig.defaultsize * 3),
+        child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Sizeconfig.defaultsize * 3),
+                color: Colors.grey.withOpacity(0.4)),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
-                decoratedbox(time: "3AM",temp: "8C",),
-                SizedBox(width: Sizeconfig.defaultsize * 2,),
-                decoratedbox(time: "3AM",temp: "8C",),
-                SizedBox(width: Sizeconfig.defaultsize * 2,),
-                decoratedbox(time: "4PM",temp: "8C",), SizedBox(width: Sizeconfig.defaultsize * 2,),
-                decoratedbox(time: "4PM",temp: "8C",),
-                SizedBox(width: Sizeconfig.defaultsize * 2,),
-                decoratedbox(time: "3AM",temp: "8C",),
-                SizedBox(width: Sizeconfig.defaultsize * 2,),
-                decoratedbox(time: "4PM",temp: "8C",), SizedBox(width: Sizeconfig.defaultsize * 2,),
-                decoratedbox(time: "4PM",temp: "8C",),
-
-
-
-
-            ],),
-          )
-        ],)
-    ));
+                Padding(
+                  padding: EdgeInsets.all(Sizeconfig.defaultsize * 2),
+                  child: Row(
+                    children: [
+                      decoratedbox(time: "3AM", temp: "8C", icon: '🌩'),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(time: "3AM", temp: "8C", icon: '🌧'),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(
+                        time: "4PM",
+                        temp: "8C",
+                          icon: '🌧'
+                      ),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(
+                        time: "4PM",
+                        temp: "8C",
+                          icon: '🌧'
+                      ),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(
+                        time: "3AM",
+                        temp: "8C",
+                          icon: '🌧'
+                      ),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(
+                        time: "4PM",
+                        temp: "8C",
+                        icon: '☔️',
+                      ),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(
+                        time: "4PM",
+                        temp: "8C",
+                        icon: '🤷‍',
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )));
   }
 }
 
 class decoratedbox extends StatelessWidget {
   final String time;
   final String temp;
-  decoratedbox({this.time, this.temp});
+  final String icon;
+  decoratedbox({this.time, this.temp, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +104,7 @@ class decoratedbox extends StatelessWidget {
                   time,
                   style: TextStyle(color: Colors.white),
                 ),
+                Text(icon),
                 Text(
                   temp,
                   style: TextStyle(color: Colors.white),

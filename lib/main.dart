@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           actions: [
             IconButton(
-              icon: SvgPicture.asset('assets/icons2.svg'),
+              icon: SvgPicture.asset('assets/icons2.svg',
+              height: Sizeconfig.defaultsize * 4,
+              width: Sizeconfig.defaultsize * 4,),
             ),
             SizedBox(
               width: Sizeconfig.defaultsize * 1,
@@ -48,14 +50,16 @@ class _BodyState extends State<Body> {
         child: SafeArea(
       child: Column(
 
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           containerupper(),
           SizedBox(
-            height: Sizeconfig.defaultsize * 50,
+            height: Sizeconfig.defaultsize * 60,
             child: Column(
 
               children: [
                 middlecoloumn(),
+
                 Expanded(child: Shiv())
               ],
             ),
