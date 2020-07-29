@@ -73,6 +73,7 @@ class _BodyState extends State<Body> {
               ),
               textAlign: TextAlign.center,
             ),
+
             Padding(
               padding: EdgeInsets.all(Sizeconfig.defaultsize * 2),
               child: Container(

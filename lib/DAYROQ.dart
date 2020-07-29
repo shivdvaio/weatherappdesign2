@@ -31,7 +31,7 @@ class daysrows extends StatelessWidget {
                     name,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

@@ -5,9 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class containerupper extends StatelessWidget {
-  const containerupper({
-    Key key,
-  }) : super(key: key);
+  String value = "";
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +28,49 @@ class containerupper extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           fontSize: 30,
                           color: Colors.white)),
-                  IconButton(
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.only(left: Sizeconfig.defaultsize * 3),
+                              child: Container(
+                                child: TextField(
+                                  cursorColor: Colors.white,
+                                  style: TextStyle(color: Colors.white,fontSize: 17),
+                                keyboardType: TextInputType.name,
 
-                    icon: SvgPicture.asset(
+                                decoration: InputDecoration(
 
-                      'assets/search.svg',
-                    ),
-                      )
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.transparent),
+                                      borderRadius: BorderRadius.circular(Sizeconfig.defaultsize * 3)
+                                  ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.white,width: 0.5),
+                                      borderRadius: BorderRadius.circular(Sizeconfig.defaultsize * 3)
+                                    ),
+                                    prefixIcon: GestureDetector(
+                                      child: Icon(Icons.search,
+                                      color: Colors.white,),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white10,
+                                    hintText: "Enter City Here",
+                                    hintStyle: TextStyle(
+                                        color: Colors.white.withOpacity(0.5), fontWeight: FontWeight.bold)),
+                              ),),
+                            ),
+                          )
+
+
+
+//                  IconButton(
+//
+//                  onPressed: (){
+//
+//                  },
+//                    icon: SvgPicture.asset(
+//                      'assets/search.svg',
+//                    ),
+//                      )
 
                 ],
               ),

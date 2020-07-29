@@ -7,6 +7,7 @@ import 'package:weather_app/size_config.dart';
 import 'middlecoloumn.dart';
 import 'package:weather_app/DaysandTemp.dart';
 
+
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-
+    backgroundColor: Colors.blueAccent.withOpacity(0.4),
         appBar: AppBar(
           title: Text("Weather App",style: TextStyle(fontWeight: FontWeight.bold),),
           leading: IconButton(icon: Icon(
@@ -57,32 +58,23 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: SafeArea(
-      child: DecoratedBox(
-        decoration: BoxDecoration(
+      child: Column(
 
-            image: DecorationImage(
-                colorFilter: ColorFilter.mode(
-                    Colors.green.withOpacity(0.8), BlendMode.dstATop),
-                fit: BoxFit.cover,
-                image: AssetImage('assets/weather.jpg'))),
-        child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          containerupper(),
+          SizedBox(
+            height: Sizeconfig.defaultsize * 60,
+            child: Column(
 
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            containerupper(),
-            SizedBox(
-              height: Sizeconfig.defaultsize * 60,
-              child: Column(
+              children: [
+                middlecoloumn(),
 
-                children: [
-                  middlecoloumn(),
-
-                  Expanded(child: Shiv())
-                ],
-              ),
+                Expanded(child: Shiv())
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ));
   }

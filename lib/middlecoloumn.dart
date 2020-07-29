@@ -43,7 +43,7 @@ class middlecoloumn extends StatelessWidget {
                 Text(
                   "8:10 AM",
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: Sizeconfig.defaultsize * 5,
                       fontWeight: FontWeight.bold),
                 ),
