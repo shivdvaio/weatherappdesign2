@@ -6,8 +6,11 @@ import 'package:weather_app/FrontFiles/DAYROQ.dart';
 import 'package:weather_app/size_config.dart';
 import 'FrontFiles/middlecoloumn.dart';
 import 'package:weather_app/FrontFiles/DaysandTemp.dart';
+import 'package:weather_app/Services/Location.dart';
+import 'package:weather_app/Services/Networkingpart.dart';
+import 'dart:convert';
 
-
+const apiKey = "d3bbf9a000350c269dd83714906b91c2";
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
@@ -54,6 +57,36 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  double latitude;
+  double longitude;
+  double temperature;
+  String Cityname;
+  int conditionid;
+  String iconid;
+
+
+  void getLocation() async {
+    Location location = Location();
+    await location.getCurrentlocation();
+
+    Networking networking = Networking(
+        url:
+        "https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey");
+
+    var Decodeddata= await networking.getData();
+
+//    Navigator.push(context, MaterialPageRoute(builder: (context){
+//      return containerupper(Weatherdata: Decodeddata);
+//    }));
+
+    temperature = jsonDecode(Decodeddata)['main']['temp'];
+    iconid = jsonDecode(Decodeddata)['weather'][0]['icon'];
+    conditionid = jsonDecode(Decodeddata)['weather'][0]['id'];
+    Cityname = jsonDecode(Decodeddata)['name'];
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
