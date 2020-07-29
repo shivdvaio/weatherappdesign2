@@ -1,7 +1,7 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/DaysandTemp.dart';
+import 'package:weather_app/FrontFiles/DaysandTemp.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/size_config.dart';
 import 'package:weather_app/main.dart';
