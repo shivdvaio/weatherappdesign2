@@ -3,10 +3,40 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/size_config.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
+import 'package:convert/convert.dart';
+import 'dart:convert';
 
-class containerupper extends StatelessWidget {
-  String value = "";
+class containerupper extends StatefulWidget {
+  containerupper({this.Weatherdata});
+  var Weatherdata;
 
+  @override
+  _containerupperState createState() => _containerupperState();
+}
+
+class _containerupperState extends State<containerupper> {
+  double temperature;
+  String Cityname;
+  int conditionid;
+  String iconid;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    updateUI(widget.Weatherdata);
+
+  }
+  void updateUI(dynamic weatherdata){
+
+    temperature = jsonDecode(weatherdata)['main']['temp'];
+    iconid = jsonDecode(weatherdata)['weather'][0]['icon'];
+    conditionid = jsonDecode(weatherdata)['weather'][0]['id'];
+    Cityname = jsonDecode(weatherdata)['name'];
+
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,44 +53,49 @@ class containerupper extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Kasganj",
-                      style: GoogleFonts.getFont("Montserrat",
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30,
-                          color: Colors.white)),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(left: Sizeconfig.defaultsize * 3),
-                              child: Container(
-                                child: TextField(
-                                  cursorColor: Colors.white,
-                                  style: TextStyle(color: Colors.white,fontSize: 17),
-                                keyboardType: TextInputType.name,
-
-                                decoration: InputDecoration(
-
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.transparent),
-                                      borderRadius: BorderRadius.circular(Sizeconfig.defaultsize * 3)
-                                  ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white,width: 0.5),
-                                      borderRadius: BorderRadius.circular(Sizeconfig.defaultsize * 3)
-                                    ),
-                                    prefixIcon: GestureDetector(
-                                      child: Icon(Icons.search,
-                                      color: Colors.white,),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white10,
-                                    hintText: "Enter City Here",
-                                    hintStyle: TextStyle(
-                                        color: Colors.white.withOpacity(0.5), fontWeight: FontWeight.bold)),
-                              ),),
-                            ),
-                          )
-
-
+                  Expanded(
+                    child: Text("$Cityname",
+                        style: GoogleFonts.getFont("Montserrat",
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30,
+                            color: Colors.white)),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.only(left: Sizeconfig.defaultsize * 3),
+                      child: Container(
+                        child: TextField(
+                          cursorColor: Colors.white,
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                  borderRadius: BorderRadius.circular(
+                                      Sizeconfig.defaultsize * 3)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.white, width: 0.5),
+                                  borderRadius: BorderRadius.circular(
+                                      Sizeconfig.defaultsize * 3)),
+                              prefixIcon: GestureDetector(
+                                child: Icon(
+                                  Icons.search,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white10,
+                              hintText: "Enter City Here",
+                              hintStyle: TextStyle(
+                                  color: Colors.white.withOpacity(0.5),
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ),
+                  )
 
 //                  IconButton(
 //
@@ -71,7 +106,6 @@ class containerupper extends StatelessWidget {
 //                      'assets/search.svg',
 //                    ),
 //                      )
-
                 ],
               ),
               SizedBox(
