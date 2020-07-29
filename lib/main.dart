@@ -10,6 +10,8 @@ import 'package:weather_app/Services/Location.dart';
 import 'package:weather_app/Services/Networkingpart.dart';
 import 'dart:convert';
 
+import 'FrontFiles/uppercontainer.dart';
+
 const apiKey = "d3bbf9a000350c269dd83714906b91c2";
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
@@ -25,7 +27,10 @@ class MyApp extends StatelessWidget {
     backgroundColor: Colors.blueAccent.withOpacity(0.4),
         appBar: AppBar(
           title: Text("Weather App",style: TextStyle(fontWeight: FontWeight.bold),),
-          leading: IconButton(icon: Icon(
+          leading: IconButton(
+
+            icon: Icon(
+
 
               Icons.navigation,
           color: Colors.white,
@@ -63,6 +68,7 @@ class _BodyState extends State<Body> {
   String Cityname;
   int conditionid;
   String iconid;
+  var Decodeddata;
 
 
   void getLocation() async {
@@ -73,10 +79,10 @@ class _BodyState extends State<Body> {
         url:
         "https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey");
 
-    var Decodeddata= await networking.getData();
-
+     Decodeddata = await networking.getData();
+    containerupper(weatherdata: Decodeddata);
 //    Navigator.push(context, MaterialPageRoute(builder: (context){
-//      return containerupper(Weatherdata: Decodeddata);
+//      return containerupper(weatherdata:  Decodeddata);
 //    }));
 
     temperature = jsonDecode(Decodeddata)['main']['temp'];

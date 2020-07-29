@@ -3,13 +3,40 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/size_config.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'dart:convert';
 class containerupper extends StatefulWidget {
+  var weatherdata;
+  containerupper({this.weatherdata});
   @override
   _containerupperState createState() => _containerupperState();
 }
 
 class _containerupperState extends State<containerupper> {
+
+  double latitude;
+  double longitude;
+  double temperature;
+  String Cityname;
+  int conditionid;
+  String iconid;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+//    updateui(widget.weatherdata);
+
+  }
+
+  void updateui(dynamic weatherData){
+
+    temperature = jsonDecode(weatherData)['main']['temp'];
+    iconid = jsonDecode(weatherData)['weather'][0]['icon'];
+    conditionid = jsonDecode(weatherData)['weather'][0]['id'];
+    Cityname = jsonDecode(weatherData)['name'];
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
