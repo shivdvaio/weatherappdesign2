@@ -11,7 +11,7 @@ const apiKey1 = "d3bbf9a000350c269dd83714906b91c2";
 
 class containerupper extends StatefulWidget {
     var dataOfWeather;
-
+  // weather data come from main
   containerupper({this.dataOfWeather});
 
   @override
@@ -23,10 +23,9 @@ class _containerupperState extends State<containerupper> {
   String typeCityname;
   double latitude;
   double longitude;
-  double temperature;
+ double temperature;
   String Cityname;
 
-  String iconid;
   String Countryname;
   dynamic dataofweather1;
 
@@ -34,17 +33,15 @@ class _containerupperState extends State<containerupper> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    updateui(widget.dataOfWeather);
+    updateUIGPS(widget.dataOfWeather);
   }
 
-// MyApp myApp = MyApp();
-//  var dataOfWeather = myApp.Weatherdata;
-  void updateui(dataofweather1) {
+  void updateUIGPS(dataofweather1) {
 
     temperature = jsonDecode(dataofweather1)['main']['temp'];
-    iconid = jsonDecode(dataofweather1)['weather'][0]['icon'];
 
     Cityname = jsonDecode(dataofweather1)['name'];
+
     Countryname = jsonDecode(dataofweather1)['sys']['country'];
   }
 
@@ -63,12 +60,14 @@ class _containerupperState extends State<containerupper> {
           context: context);
     }
     _controller.clear();
+    setState(() {
+      temperature = jsonDecode(datareturnbyycityname)['main']['temp'];
 
-    temperature = jsonDecode(datareturnbyycityname)['main']['temp'];
-    iconid = jsonDecode(datareturnbyycityname)['weather'][0]['icon'];
+//    iconid = jsonDecode(datareturnbyycityname)['weather'][0]['icon'];
+      Cityname = jsonDecode(datareturnbyycityname)['name'];
+      Countryname = jsonDecode(datareturnbyycityname)['sys']['country'];
+    });
 
-    Cityname = jsonDecode(datareturnbyycityname)['name'];
-    Countryname = jsonDecode(datareturnbyycityname)['sys']['country'];
   }
 
 
@@ -116,12 +115,16 @@ class _containerupperState extends State<containerupper> {
                                       color: Colors.white, width: 0.5),
                                   borderRadius: BorderRadius.circular(
                                       Sizeconfig.defaultsize * 3)),
-                              prefixIcon: GestureDetector(
-                                child: GestureDetector(
-                                  onTap: () {
+                              prefixIcon: Container(
+                                height: 30,
+                                width: 30,
+                                child: FlatButton(
+                                  onPressed: () {
                                     if (typeCityname != null) {
                                       UpdateWeatherbyCityname(typeCityname);
                                       FocusScope.of(context).unfocus();
+                                      _controller.clear();
+
                                     } else {
                                       InfoBgAlertBox(
                                           title: "City Name Error",
@@ -133,7 +136,6 @@ class _containerupperState extends State<containerupper> {
                                     }
                                   },
                                   child: Icon(
-
                                     Icons.search,
                                     color: Colors.white,
                                   ),

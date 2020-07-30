@@ -12,8 +12,9 @@ import 'dart:convert';
 import 'Screen/firstscreen.dart';
 
 import 'FrontFiles/uppercontainer.dart';
-
+import 'package:weather_app/Screen/firstscreen.dart';
 const apiKey = "d3bbf9a000350c269dd83714906b91c2";
+
 void main() {
   runApp(MaterialApp(
     initialRoute: 'first',
@@ -27,6 +28,9 @@ void main() {
 dynamic WeatherDataFromServer;
 class MyApp extends StatefulWidget {
 
+
+  //come from Firstscreen
+
   var Weatherdata;
   MyApp({this.Weatherdata});
 
@@ -38,6 +42,7 @@ class MyApp extends StatefulWidget {
 
 
 class _MyAppState extends State<MyApp> {
+
   String cityname;
   double temperature;
   @override
@@ -48,7 +53,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   void updateUI1(dynamic data){
+    // same data from first screen
     WeatherDataFromServer = data;
+    // and transfer to upper container
 
   }
   @override
@@ -65,7 +72,9 @@ class _MyAppState extends State<MyApp> {
           ),
           leading: IconButton(
             onPressed: (){
-              cityname = jsonDecode(WeatherDataFromServer)['name'];
+              setState(() {
+
+              });
             },
             icon: Icon(
               Icons.navigation,
@@ -107,6 +116,7 @@ class _BodyState extends State<Body> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          // weather data transfer to upper container from main.
           containerupper(dataOfWeather:WeatherDataFromServer),
           SizedBox(
             height: Sizeconfig.defaultsize * 60,
