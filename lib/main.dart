@@ -9,41 +9,79 @@ import 'package:weather_app/FrontFiles/DaysandTemp.dart';
 import 'package:weather_app/Services/Location.dart';
 import 'package:weather_app/Services/Networkingpart.dart';
 import 'dart:convert';
+import 'Screen/firstscreen.dart';
 
 import 'FrontFiles/uppercontainer.dart';
 
 const apiKey = "d3bbf9a000350c269dd83714906b91c2";
 void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+  runApp(MaterialApp(
+    initialRoute: 'first',
+      routes: {
+         'first':(context)=> FirstScreen(),
+
+      },
+      debugShowCheckedModeBanner: false, home: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+dynamic WeatherDataFromServer;
+class MyApp extends StatefulWidget {
+
+  var Weatherdata;
+  MyApp({this.Weatherdata});
+
+
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+
+class _MyAppState extends State<MyApp> {
+  String cityname;
+  double temperature;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    updateUI1(widget.Weatherdata);
+  }
+
+  void updateUI1(dynamic data){
+    WeatherDataFromServer = data;
+
+  }
   @override
   Widget build(BuildContext context) {
     Sizeconfig.getsize(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-    backgroundColor: Colors.blueAccent.withOpacity(0.4),
+        backgroundColor: Colors.blueAccent.withOpacity(0.4),
         appBar: AppBar(
-          title: Text("Weather App",style: TextStyle(fontWeight: FontWeight.bold),),
+          title: Text(
+            "Weather App",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           leading: IconButton(
-
+            onPressed: (){
+              cityname = jsonDecode(WeatherDataFromServer)['name'];
+            },
             icon: Icon(
-
-
               Icons.navigation,
-          color: Colors.white,
-          size: 35,
-          ),),
+              color: Colors.white,
+              size: 35,
+            ),
+          ),
           backgroundColor: Color(0xFF314776),
           elevation: 0,
           actions: [
-
             IconButton(
-              icon: SvgPicture.asset('assets/icons2.svg',
-              height: Sizeconfig.defaultsize * 4,
-              width: Sizeconfig.defaultsize * 4,),
+              icon: SvgPicture.asset(
+                'assets/icons2.svg',
+                height: Sizeconfig.defaultsize * 4,
+                width: Sizeconfig.defaultsize * 4,
+              ),
             ),
             SizedBox(
               width: Sizeconfig.defaultsize * 1,
@@ -62,55 +100,18 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  double latitude;
-  double longitude;
-  double temperature;
-  String Cityname;
-  int conditionid;
-  String iconid;
-  var Decodeddata;
-
-
-  void getLocation() async {
-    Location location = Location();
-    await location.getCurrentlocation();
-
-    Networking networking = Networking(
-        url:
-        "https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey");
-
-     Decodeddata = await networking.getData();
-    containerupper(weatherdata: Decodeddata);
-//    Navigator.push(context, MaterialPageRoute(builder: (context){
-//      return containerupper(weatherdata:  Decodeddata);
-//    }));
-
-    temperature = jsonDecode(Decodeddata)['main']['temp'];
-    iconid = jsonDecode(Decodeddata)['weather'][0]['icon'];
-    conditionid = jsonDecode(Decodeddata)['weather'][0]['id'];
-    Cityname = jsonDecode(Decodeddata)['name'];
-
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: SafeArea(
       child: Column(
-
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          containerupper(),
+          containerupper(dataOfWeather:WeatherDataFromServer),
           SizedBox(
             height: Sizeconfig.defaultsize * 60,
             child: Column(
-
-              children: [
-                middlecoloumn(),
-
-                Expanded(child: Shiv())
-              ],
+              children: [middlecoloumn(), Expanded(child: Shiv())],
             ),
           ),
         ],

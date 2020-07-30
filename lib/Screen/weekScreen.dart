@@ -141,9 +141,9 @@ class Rowsitems extends StatelessWidget {
             child: Container(
               child: Row(
                 children: [
-                  IconButton(
-                    icon: SvgPicture.asset(IconSrc),
-                  ),
+//                  IconButton(
+//                    icon: SvgPicture.asset(IconSrc),
+//                  ),
                   SizedBox(width: Sizeconfig.defaultsize * 4,),
                   Text(temp,style: TextStyle(color: Colors.white, fontSize: 20))
                 ],

@@ -34,6 +34,7 @@ dependencies:
   geolocator: 5.3.2+2
   http: 0.12.2
   flutter_spinkit: 4.1.2+1
+  flutter_awesome_alert_box: 1.0.1
 
 
 dev_dependencies:

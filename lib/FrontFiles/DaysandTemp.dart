@@ -28,26 +28,26 @@ class _ShivState extends State<Shiv> {
                   padding: EdgeInsets.all(Sizeconfig.defaultsize * 2),
                   child: Row(
                     children: [
-                      decoratedbox(time: "3AM", temp: "8C", icon: '🌩'),
+                      decoratedbox(time: "3AM", temp: "8C"),
                       SizedBox(
                         width: Sizeconfig.defaultsize * 2,
                       ),
-                      decoratedbox(time: "3AM", temp: "8C", icon: '🌧'),
-                      SizedBox(
-                        width: Sizeconfig.defaultsize * 2,
-                      ),
-                      decoratedbox(
-                        time: "4PM",
-                        temp: "8C",
-                          icon: '🌧'
-                      ),
+                      decoratedbox(time: "3AM", temp: "8C"),
                       SizedBox(
                         width: Sizeconfig.defaultsize * 2,
                       ),
                       decoratedbox(
                         time: "4PM",
                         temp: "8C",
-                          icon: '🌧'
+
+                      ),
+                      SizedBox(
+                        width: Sizeconfig.defaultsize * 2,
+                      ),
+                      decoratedbox(
+                        time: "4PM",
+                        temp: "8C",
+
                       ),
                       SizedBox(
                         width: Sizeconfig.defaultsize * 2,
@@ -55,7 +55,7 @@ class _ShivState extends State<Shiv> {
                       decoratedbox(
                         time: "3AM",
                         temp: "8C",
-                          icon: '🌧'
+
                       ),
                       SizedBox(
                         width: Sizeconfig.defaultsize * 2,
@@ -63,7 +63,7 @@ class _ShivState extends State<Shiv> {
                       decoratedbox(
                         time: "4PM",
                         temp: "8C",
-                        icon: '☔️',
+
                       ),
                       SizedBox(
                         width: Sizeconfig.defaultsize * 2,
@@ -71,7 +71,7 @@ class _ShivState extends State<Shiv> {
                       decoratedbox(
                         time: "4PM",
                         temp: "8C",
-                        icon: '🤷‍',
+
                       ),
                     ],
                   ),
@@ -84,8 +84,8 @@ class _ShivState extends State<Shiv> {
 class decoratedbox extends StatelessWidget {
   final String time;
   final String temp;
-  final String icon;
-  decoratedbox({this.time, this.temp, this.icon});
+
+  decoratedbox({this.time, this.temp});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,6 @@ class decoratedbox extends StatelessWidget {
                   time,
                   style: TextStyle(color: Colors.white),
                 ),
-                Text(icon),
                 Text(
                   temp,
                   style: TextStyle(color: Colors.white),

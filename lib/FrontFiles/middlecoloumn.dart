@@ -17,26 +17,26 @@ class middlecoloumn extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  rowchild(
-                    iconSrc: "assets/meter.svg",
-                    iconvalue: "75 %",
-                  ),
-                  rowchild(
-                    iconSrc: "assets/umbrella.svg",
-                    iconvalue: "31mm",
-                  ),
-                  rowchild(
-                    iconvalue: "4.2mph",
-                    iconSrc: "assets/air1.svg",
-                  ),
-                ],
-              ),
-            ),
+//            Container(
+//
+//              child: Row(
+//                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                children: [
+//                  rowchild(
+//                    iconSrc: "assets/meter.svg",
+//                    iconvalue: "75 %",
+//                  ),
+//                  rowchild(
+//                    iconSrc: "assets/umbrella.svg",
+//                    iconvalue: "31mm",
+//                  ),
+//                  rowchild(
+//                    iconvalue: "4.2mph",
+//                    iconSrc: "assets/air1.svg",
+//                  ),
+//                ],
+//              ),
+//            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
