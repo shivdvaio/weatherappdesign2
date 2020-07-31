@@ -4,11 +4,39 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/size_config.dart';
 import 'package:weather_app/FrontFiles/DAYROQ.dart';
 import 'package:weather_app/Screen/weekScreen.dart';
-
+import 'package:weather_app/Services/Networkingpart.dart';
+import 'dart:convert';
 class middlecoloumn extends StatelessWidget {
-  const middlecoloumn({
-    Key key,
-  }) : super(key: key);
+//  var weekdataValues1;
+//  middlecoloumn({this.weekdataValues1});
+//double lat1,long1;
+var weekDatavalues;
+
+
+//middlecoloumn({this.lat1,this.long1});
+
+void getWeekdata(double lat, double lon) async {
+
+
+  Networking networking = Networking(
+      url:
+      "https://api.weatherbit.io/v2.0/forecast/daily?&lat=$lat&lon=$lon&key=26a7cb51c53c4d61b700b193dd1fd0db");
+
+  weekDatavalues = await networking.getData();
+
+  weeekScreen weekscr = weeekScreen();
+  weekscr.updateui23(weekdata231: weekDatavalues);
+
+//
+//    weeekScreen weekscr = weeekScreen(weekdata: weekDatavalues);
+
+
+//    middlecoloumn middle =  middlecoloumn(weekdataValues1: weekDatavalues);
+
+
+}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +102,7 @@ class middlecoloumn extends StatelessWidget {
                   daysrows(
                     name: "Week",
                     function: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> weekScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> weeekScreen()));
                     },
                   )
                 ],

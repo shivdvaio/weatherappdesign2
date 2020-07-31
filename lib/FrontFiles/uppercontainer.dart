@@ -6,11 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:convert';
 import 'package:weather_app/Services/Networkingpart.dart';
 import 'package:flutter_awesome_alert_box/flutter_awesome_alert_box.dart';
+import 'package:weather_app/FrontFiles/middlecoloumn.dart';
+import 'package:weather_app/Screen/weekScreen.dart';
 
 const apiKey1 = "d3bbf9a000350c269dd83714906b91c2";
 
 class containerupper extends StatefulWidget {
-    var dataOfWeather;
+  var dataOfWeather;
   // weather data come from main
   containerupper({this.dataOfWeather});
 
@@ -23,8 +25,10 @@ class _containerupperState extends State<containerupper> {
   String typeCityname;
   double latitude;
   double longitude;
- double temperature;
+  double temperature;
   String Cityname;
+  double lat;
+  double lon;
 
   String Countryname;
   dynamic dataofweather1;
@@ -33,11 +37,11 @@ class _containerupperState extends State<containerupper> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    updateUIGPS(widget.dataOfWeather);
+    updateUIGPS(widget.dataOfWeather);middlecoloumn midcol = middlecoloumn();
+
   }
 
   void updateUIGPS(dataofweather1) {
-
     temperature = jsonDecode(dataofweather1)['main']['temp'];
 
     Cityname = jsonDecode(dataofweather1)['name'];
@@ -45,13 +49,15 @@ class _containerupperState extends State<containerupper> {
     Countryname = jsonDecode(dataofweather1)['sys']['country'];
   }
 
-
   void UpdateWeatherbyCityname(typeCityname) async {
+    double long;
+    double lati;
     Networking networking = Networking(
-        url:"https://api.openweathermap.org/data/2.5/weather?q=$typeCityname&appid=$apiKey1&units=metric&units=metric");
+        url:
+            "https://api.openweathermap.org/data/2.5/weather?q=$typeCityname&appid=$apiKey1&units=metric&units=metric");
     var datareturnbyycityname = await networking.getData();
 
-    if (datareturnbyycityname==null){
+    if (datareturnbyycityname == null) {
       _controller.clear();
       InfoBgAlertBox(
           title: "City Name Error",
@@ -65,10 +71,19 @@ class _containerupperState extends State<containerupper> {
 
 //    iconid = jsonDecode(datareturnbyycityname)['weather'][0]['icon'];
       Cityname = jsonDecode(datareturnbyycityname)['name'];
+      print(Cityname);
       Countryname = jsonDecode(datareturnbyycityname)['sys']['country'];
-    });
+      long = jsonDecode(datareturnbyycityname)['coord']['lon'];
+      lati = jsonDecode(datareturnbyycityname)['coord']['lat'];
+      middlecoloumn midcol = middlecoloumn();
+      midcol.getWeekdata(long, lati);
 
+
+      print("transfer to middle col");
+
+    });
   }
+
 
 
   @override
@@ -96,18 +111,17 @@ class _containerupperState extends State<containerupper> {
                   Expanded(
                     child: Padding(
                       padding:
-                      EdgeInsets.only(left: Sizeconfig.defaultsize * 1),
+                          EdgeInsets.only(left: Sizeconfig.defaultsize * 1),
                       child: Container(
                         child: TextField(
                           controller: _controller,
                           cursorColor: Colors.white,
-                          style: TextStyle(
-                              color: Colors.white, fontSize: 17),
+                          style: TextStyle(color: Colors.white, fontSize: 17),
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                   borderSide:
-                                  BorderSide(color: Colors.transparent),
+                                      BorderSide(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(
                                       Sizeconfig.defaultsize * 3)),
                               enabledBorder: OutlineInputBorder(
@@ -122,9 +136,8 @@ class _containerupperState extends State<containerupper> {
                                   onPressed: () {
                                     if (typeCityname != null) {
                                       UpdateWeatherbyCityname(typeCityname);
-                                      FocusScope.of(context).unfocus();
                                       _controller.clear();
-
+                                      FocusScope.of(context).unfocus();
                                     } else {
                                       InfoBgAlertBox(
                                           title: "City Name Error",
@@ -147,10 +160,8 @@ class _containerupperState extends State<containerupper> {
                               hintStyle: TextStyle(
                                   color: Colors.white.withOpacity(0.5),
                                   fontWeight: FontWeight.bold)),
-
                           onChanged: (value) {
                             typeCityname = value;
-
                           },
                         ),
                       ),
@@ -216,5 +227,4 @@ class _containerupperState extends State<containerupper> {
       ),
     );
   }
-
 }

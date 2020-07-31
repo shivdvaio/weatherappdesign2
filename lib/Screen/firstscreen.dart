@@ -39,7 +39,8 @@ class _FirstScreenState extends State<FirstScreen> {
 
     Networking networking = Networking(
         url:
-        "https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric");
+        "https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric"
+    );
 
     Decodeddata = await networking.getData();
 Navigator.push(context, MaterialPageRoute(builder: (context){

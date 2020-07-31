@@ -32,6 +32,7 @@ class MyApp extends StatefulWidget {
   //come from Firstscreen
 
   var Weatherdata;
+
   MyApp({this.Weatherdata});
 
 
@@ -40,10 +41,10 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-
+String cityname;
 class _MyAppState extends State<MyApp> {
 
-  String cityname;
+
   double temperature;
   @override
   void initState() {
@@ -71,11 +72,11 @@ class _MyAppState extends State<MyApp> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           leading: IconButton(
-            onPressed: (){
-              setState(() {
-
-              });
-            },
+//            onPressed: (){
+//              setState(() {
+//                cityname = jsonDecode(WeatherDataFromServer)['name'];
+//              });
+//            },
             icon: Icon(
               Icons.navigation,
               color: Colors.white,
